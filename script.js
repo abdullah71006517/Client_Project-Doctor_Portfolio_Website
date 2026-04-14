@@ -25,20 +25,26 @@ document.getElementById('hire_me')?.addEventListener('click', function() {
   alert('Thank you for your interest! Please contact me at zahidhasan.zh801@gmail.com');
 });
 
+
+
 // ============================================
-// DOWNLOAD CV BUTTON (UPDATED)
+// DOWNLOAD CV BUTTON
 // ============================================
 document.getElementById('download_cv')?.addEventListener('click', function() {
-  alert('🚧 CV Service is Upcoming. Please check back later.')
 
-const cvUrl = 'CV.pdf';  
-  if (cvUrl) { const link = document.createElement('a'); link.href = cvUrl; link.download = 'Zahid_Hasan_CV.pdf'; 
-              document.body.appendChild(link);
-              link.click(); document.body.removeChild(link); }
-  else
-  { alert('CV file not found. Please add CV.pdf to your repository.'); }
-  
-  
+  const cvUrl = 'Zahid Hasan CV .pdf';
+
+  const link = document.createElement('a');
+  link.href = encodeURI(cvUrl); // IMPORTANT for spaces
+  link.download = 'Zahid Hasan CV .pdf';
+
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+});
+document.getElementById('download_cv')?.addEventListener('click', function() {
+  alert('📄 Downloading Zahid Hasan CV...');
 });
 
 // ============================================
