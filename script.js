@@ -1,14 +1,18 @@
 // ============================================
-// PORTFOLIO WEBSITE - JavaScript
+// PORTFOLIO WEBSITE - JavaScript (FIXED)
 // ============================================
 
-// Smooth Scrolling for Navigation Links
+
+// ============================================
+// SMOOTH SCROLLING
+// ============================================
 document.querySelectorAll('.navbar a').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
+  anchor.addEventListener('click', function (e) {
     e.preventDefault();
+
     const targetId = this.getAttribute('href');
     const targetSection = document.querySelector(targetId);
-    
+
     if (targetSection) {
       targetSection.scrollIntoView({
         behavior: 'smooth',
@@ -18,34 +22,33 @@ document.querySelectorAll('.navbar a').forEach(anchor => {
   });
 });
 
+
 // ============================================
 // HIRE ME BUTTON
 // ============================================
-document.getElementById('hire_me')?.addEventListener('click', function() {
+document.getElementById('hire_me')?.addEventListener('click', function () {
   alert('Thank you for your interest! Please contact me at zahidhasan.zh801@gmail.com');
 });
 
 
-
 // ============================================
-// DOWNLOAD CV BUTTON
+// DOWNLOAD CV BUTTON (FIXED)
 // ============================================
-document.getElementById('download_cv')?.addEventListener('click', function() {
+document.getElementById('download_cv')?.addEventListener('click', function () {
 
-  const cvUrl = 'Zahid Hasan CV .pdf';
+  const fileName = './Zahid_Hasan_CV.pdf';
 
   const link = document.createElement('a');
-  link.href = encodeURI(cvUrl); // IMPORTANT for spaces
-  link.download = 'Zahid Hasan CV .pdf';
+  link.href = fileName;
+  link.download = 'Zahid_Hasan_CV.pdf';
 
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 
+  alert('📄 Downloading CV...');
 });
-document.getElementById('download_cv')?.addEventListener('click', function() {
-  alert('📄 Downloading Zahid Hasan CV...');
-});
+
 
 // ============================================
 // IMAGE LAZY LOADING
@@ -66,6 +69,7 @@ if ('IntersectionObserver' in window) {
     imageObserver.observe(img);
   });
 }
+
 
 // ============================================
 // ACTIVE NAVIGATION HIGHLIGHT
@@ -91,12 +95,14 @@ window.addEventListener('scroll', () => {
   });
 });
 
+
 // ============================================
 // SOCIAL MEDIA LINK VALIDATION
 // ============================================
 document.querySelectorAll('.social-media a').forEach(link => {
-  link.addEventListener('click', function(e) {
+  link.addEventListener('click', function (e) {
     const url = this.getAttribute('href');
+
     if (!url || url === '#') {
       e.preventDefault();
       alert('Social media link not configured yet.');
@@ -104,14 +110,15 @@ document.querySelectorAll('.social-media a').forEach(link => {
   });
 });
 
+
 // ============================================
-// GALLERY IMAGE PREVIEW (LIGHTBOX)
+// GALLERY LIGHTBOX
 // ============================================
 function initGalleryLightbox() {
   const galleryImages = document.querySelectorAll('.gallery-container img');
-  
+
   galleryImages.forEach(img => {
-    img.addEventListener('click', function() {
+    img.addEventListener('click', function () {
       createLightbox(this.src, this.alt);
     });
   });
@@ -123,6 +130,7 @@ function createLightbox(imageSrc, imageAlt) {
 
   const lightbox = document.createElement('div');
   lightbox.className = 'lightbox';
+
   lightbox.innerHTML = `
     <div class="lightbox-content">
       <span class="close">&times;</span>
@@ -150,6 +158,7 @@ function createLightbox(imageSrc, imageAlt) {
   });
 }
 
+
 // ============================================
 // FORM VALIDATION
 // ============================================
@@ -164,10 +173,12 @@ function validateContactForm(form) {
     alert('Please enter your name');
     return false;
   }
+
   if (!email || !emailRegex.test(email)) {
     alert('Please enter a valid email address');
     return false;
   }
+
   if (!message) {
     alert('Please enter a message');
     return false;
@@ -176,11 +187,13 @@ function validateContactForm(form) {
   return true;
 }
 
+
 // ============================================
-// PAGE LOAD ANIMATIONS
+// PAGE LOAD ANIMATION
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.card, .project_card');
+
   cards.forEach((card, index) => {
     card.style.animation = `fadeIn 0.5s ease-in forwards`;
     card.style.animationDelay = `${index * 0.1}s`;
@@ -189,6 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGalleryLightbox();
   console.log('Portfolio page loaded successfully!');
 });
+
 
 // ============================================
 // SCROLL TO TOP BUTTON
@@ -219,16 +233,18 @@ function createScrollToTopButton() {
 
 createScrollToTopButton();
 
+
 // ============================================
-// ERROR HANDLING FOR MISSING IMAGES
+// IMAGE ERROR HANDLING
 // ============================================
 document.querySelectorAll('img').forEach(img => {
-  img.addEventListener('error', function() {
+  img.addEventListener('error', function () {
     this.src = 'https://via.placeholder.com/400x300?text=Image+Not+Found';
     this.alt = 'Image not found';
     this.style.opacity = '0.7';
   });
 });
+
 
 // ============================================
 // PERFORMANCE OPTIMIZATION
@@ -239,11 +255,13 @@ window.addEventListener('load', () => {
 
 function debounce(func, wait) {
   let timeout;
+
   return function (...args) {
     clearTimeout(timeout);
     timeout = setTimeout(() => func(...args), wait);
   };
 }
+
 
 // ============================================
 // MOBILE MENU TOGGLE
@@ -253,6 +271,10 @@ function toggleMobileMenu() {
   navbar.classList.toggle('mobile-active');
 }
 
+
+// ============================================
+// GLOBAL EXPORT
+// ============================================
 window.portfolioUtils = {
   validateContactForm,
   toggleMobileMenu,
